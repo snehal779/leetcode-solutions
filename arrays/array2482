@@ -1,0 +1,27 @@
+class array2482 {
+    public int[][] onesMinusZeros(int[][] grid) {
+       
+        int[][] diff = new int[grid.length][grid[0].length];
+        int[] rows = new int[grid.length];
+        int[] cols = new int[grid[0].length];
+        for(int i=0; i<grid.length; i++){
+            for(int j=0; j<grid[0].length; j++){
+                if(grid[i][j]==1){
+                    rows[i] +=1;
+                    cols[j] +=1;
+                }  
+            }
+        }
+        for(int i=0; i<grid.length; i++){
+            for(int j=0; j<grid[0].length; j++){
+                int onesrowi = rows[i];
+                int onescolj = cols[j];
+                int zerorowi = grid[0].length - rows[i];
+                int zerocolj = grid.length - cols[j];
+
+                diff[i][j] = onesrowi + onescolj - zerorowi - zerocolj;
+            }
+        }
+        return diff;
+    }
+}
